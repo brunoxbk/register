@@ -1,13 +1,16 @@
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 from django.conf import settings
 from django.conf.urls.static import static
-from .api import CustomAuthToken
+from .api import CustomAuthToken, RegisterView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', CustomAuthToken.as_view()),
+    path('cashbook/', include('cashbook.urls')),
+    path('auth/login/', CustomAuthToken.as_view()),
+    path('auth/register/', RegisterView.as_view()),
 ]
 
 if settings.DEBUG:
