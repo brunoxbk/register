@@ -33,9 +33,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
+
+CORS_ORIGIN_WHITELIST = config('WHITELIST', cast=lambda v: [
+    s.strip() for s in v.split(',')], default=[])
 
 # Application definition
 
